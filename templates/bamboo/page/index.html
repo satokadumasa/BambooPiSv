@@ -1,0 +1,39 @@
+{% extends 'commons/base.html' %}
+
+{% load pagination %}
+{% block content %}
+index<br>
+{% for page in object_list %}
+[{{page.title}}][{{page.body}}]<br>
+{% endfor %}
+<!-- 組み込みタグの読み込み-->
+
+<hr>
+{% if is_paginated %}
+   <p>{{ page_obj.paginator.num_pages }}ページ中{{ page_obj.number }}ページ目</p>
+   <nav>
+     <ul class="pagination">
+         {% if page_obj.has_previous %}
+             <li class="page-item">
+                 <a class="page-link" href="{% url 'bamboo:pageindex' %}?{% query_pagination request page_obj.previous_page_number %}">
+                     前へ
+                 </a>
+             </li>
+         {% endif %}
+         {% for link_page in page_obj.paginator.page_range %}
+             {% if link_page == page_obj.number %}
+                 <li class="page-item active"><span class="page-link" href="#">{{ link_page }}</span></li>
+             {% else %}
+                 <li class="page-item"><a class="page-link" href="{% url 'bamboo:pageindex' %}?{% query_pagination request link_page %}">{{ link_page }}</a></li>
+             {% endif %}
+         {% endfor %}
+
+         {% if page_obj.has_next %}
+             <li class="page-item"><a class="page-link" href="{% url 'bamboo:pageindex' %}?{% query_pagination request page_obj.next_page_number %}">次へ</a></li>
+         {% endif %}
+     </ul>
+   </nav>
+{% endif %}
+{% endblock %}
+
+

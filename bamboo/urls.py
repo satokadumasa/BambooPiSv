@@ -1,0 +1,39 @@
+"""BambooPiSv URL Configuration
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/2.2/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
+from django.contrib import admin
+from django.urls import include,path
+from bamboo.views.index import IndexView
+from bamboo.views.note.index import IndexView as NoteIndexView
+from bamboo.views.note.detail import DetailView as NoteDetailView
+from bamboo.views.page.index import IndexView as PageIndexView
+from django.conf import settings
+
+app_name = 'bamboo'
+
+urlpatterns = [
+    # トップ画面（一覧画面）
+    path('', IndexView.as_view(), name='index'),
+    # Note一覧画面
+    path('note/', NoteIndexView.as_view(), name='noteindex'),
+    # Note詳細画面
+    path('note/<int:pk>/', NoteDetailView.as_view(), name='notedetail'),
+    # 詳細画面
+    path('page/', PageIndexView.as_view(), name='pageindex'),
+]
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [path('__debug__/', include(debug_toolbar.urls))] + urlpatterns
+
