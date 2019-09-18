@@ -17,3 +17,6 @@ from bamboo.models.user_note import UserNote
 from bamboo.models.user_page import UserPage
 from bamboo.models.user_remark import UserRemark
 from bamboo.models.user_room import  UserRoom
+from bamboo.models.page_comment import PageComment
+from bamboo.models.page_page_comment import PagePageComment
+from bamboo.models.user_page_comment import UserPageComment

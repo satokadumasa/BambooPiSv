@@ -5,10 +5,13 @@
 index<br>
 {% for note in object_list %}
                 <div class="row">
-                    <div class="col-lg-5 col-md-6 col-sm-12 col-12">
-                        {{note.title}}{% for user in note.users.all %}【{{user.username}}】{% endfor %}
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+                        <a href="{% url 'bamboo:note_detail' note.pk %}" >{{note.title}}</a>
                     </div>
-                    <div class="col-lg-7 col-md-7 col-sm-12 col-12">
+                    <div class="col-lg-2 col-md- col-sm-12 col-12">
+                        {% for user in note.users.all %}【{{user.username}}】{% endfor %}
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                     {{note.body}}
                     </div>
                 </div>
@@ -21,7 +24,7 @@ index<br>
                     <ul class="pagination">
                         {% if page_obj.has_previous %}
                             <li class="page-item">
-                                <a class="page-link" href="{% url 'bamboo:noteindex' %}?{% query_pagination request page_obj.previous_page_number %}">
+                                <a class="page-link" href="{% url 'bamboo:note_index' %}?{% query_pagination request page_obj.previous_page_number %}">
                                     前へ
                                 </a>
                             </li>
@@ -31,13 +34,13 @@ index<br>
                                 <li class="page-item active"><span class="page-link" href="#">{{ link_page }}</span></li>
                             {% else %}
                                 <li class="page-item">
-                                    <a class="page-link" href="{% url 'bamboo:noteindex' %}?{% query_pagination request link_page %}">{{ link_page }}</a>
+                                    <a class="page-link" href="{% url 'bamboo:note_index' %}?{% query_pagination request link_page %}">{{ link_page }}</a>
                                 </li>
                             {% endif %}
                         {% endfor %}
                         {% if page_obj.has_next %}
                             <li class="page-item">
-                                <a class="page-link" href="{% url 'bamboo:noteindex' %}?{% query_pagination request page_obj.next_page_number %}">次へ</a>
+                                <a class="page-link" href="{% url 'bamboo:note_index' %}?{% query_pagination request page_obj.next_page_number %}">次へ</a>
                             </li>
                         {% endif %}
                     </ul>

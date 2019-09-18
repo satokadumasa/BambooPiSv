@@ -10,7 +10,7 @@ from bamboo.models.user import User
 
 class IndexView(generic.ListView):
     model = Note
-    queryset = Note.objects.all().prefetch_related("page")
+    queryset = Note.objects.prefetch_related("users")
     paginate_by = 2
     template_name = "bamboo/note/index.html"
 
@@ -21,5 +21,6 @@ class IndexView(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
         print("bamboo.note.IndexView.get_context_data")
+        context["title"] = "Celaeno"
         return context
 #         return render(request, "bamboo/note/index.html", context)

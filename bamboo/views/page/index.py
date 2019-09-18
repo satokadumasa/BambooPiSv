@@ -17,9 +17,4 @@ class IndexView(generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
-#         object_list = self.model.objects.order_by('-created_at')
-#         context["notes"] = object_list
-
-        print("bamboo.note.IndexView.get_context_data")
         return context
-#         return render(request, "bamboo/note/index.html", context)

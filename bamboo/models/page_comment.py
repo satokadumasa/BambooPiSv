@@ -7,7 +7,7 @@ from django.db import models
 from django.utils import timezone
 from bamboo.models.user import User
 
-class Page(models.Model):
+class PageComment(models.Model):
     title = models.CharField(
         verbose_name='タイトル',
         blank=True,
@@ -19,7 +19,7 @@ class Page(models.Model):
         verbose_name='本文',
         blank=True,
         null=True,
-        max_length=10000,
+        max_length=1000,
     )
     status = models.IntegerField(
         verbose_name='公開状態',
@@ -51,15 +51,10 @@ class Page(models.Model):
 
     users = models.ManyToManyField(
         User,
-        through="UserPage",
+        through="UserPageComment",
     )
 
-    notes = models.ManyToManyField(
-        "Note",
-        through="NotePage",
-    )
-
-    page_comments = models.ManyToManyField(
-        "PageComment",
+    pages = models.ManyToManyField(
+        "Page",
         through="PagePageComment",
     )

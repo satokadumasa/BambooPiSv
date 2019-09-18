@@ -19,6 +19,7 @@ from bamboo.views.index import IndexView
 from bamboo.views.note.index import IndexView as NoteIndexView
 from bamboo.views.note.detail import DetailView as NoteDetailView
 from bamboo.views.page.index import IndexView as PageIndexView
+from bamboo.views.note.detail import DetailView as PageDetailView
 from django.conf import settings
 
 app_name = 'bamboo'
@@ -27,11 +28,13 @@ urlpatterns = [
     # トップ画面（一覧画面）
     path('', IndexView.as_view(), name='index'),
     # Note一覧画面
-    path('note/', NoteIndexView.as_view(), name='noteindex'),
+    path('note/', NoteIndexView.as_view(), name='note_index'),
     # Note詳細画面
-    path('note/<int:pk>/', NoteDetailView.as_view(), name='notedetail'),
+    path('note/<int:pk>/', NoteDetailView.as_view(), name='note_detail'),
     # 詳細画面
-    path('page/', PageIndexView.as_view(), name='pageindex'),
+    path('page/', PageIndexView.as_view(), name='page_index'),
+    # Note詳細画面
+    path('page/<int:pk>/', PageDetailView.as_view(), name='page_detail'),
 ]
 if settings.DEBUG:
     import debug_toolbar
