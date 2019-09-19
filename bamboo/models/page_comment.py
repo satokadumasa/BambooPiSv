@@ -35,6 +35,9 @@ class PageComment(models.Model):
         default=timezone.now
     )
 
+    def __str__(self):
+        return self.id
+
     updated_at = models.DateTimeField(
         verbose_name='更新日時',
         blank=True,

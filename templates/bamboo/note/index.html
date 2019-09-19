@@ -15,7 +15,13 @@ index<br>
                     {{note.body}}
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                    	<a href="{% url 'bamboo:note_create' %}">Add Note</a>
+                    </div>
+                </div>
 {% endfor %}
+
 <!-- 組み込みタグの読み込み-->
                 <hr>
 {% if is_paginated %}

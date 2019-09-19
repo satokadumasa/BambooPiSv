@@ -34,6 +34,9 @@ class Site(models.Model):
         default=0
     )
 
+    def __str__(self):
+        return self.id
+
     created_at = models.DateTimeField(
         verbose_name='作成日時',
         blank=True,

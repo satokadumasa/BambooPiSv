@@ -18,6 +18,9 @@ from django.urls import include,path
 from django.conf import settings
 
 urlpatterns = [
+    path('accounts/', include('accounts.urls')), # [追加]
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('admin/', admin.site.urls),
     path('bamboo/', include('bamboo.urls')),
 ]
 

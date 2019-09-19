@@ -53,3 +53,6 @@ class Attachment(models.Model):
         through="AlbumAttachment",
 #         through_fields=("user_id","note_id")
     )
+
+    def __str__(self):
+        return self.id

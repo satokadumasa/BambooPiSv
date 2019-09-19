@@ -59,3 +59,6 @@ class Album(models.Model):
         through="UserAlbum",
 #         through_fields=("user_id","note_id")
     )
+
+    def __str__(self):
+        return self.id

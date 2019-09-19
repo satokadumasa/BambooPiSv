@@ -51,3 +51,6 @@ class Remark(models.Model):
         through="UserRemark",
 #         through_fields=("user_id","note_id")
     )
+
+    def __str__(self):
+        return self.id

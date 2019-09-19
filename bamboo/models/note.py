@@ -51,18 +51,18 @@ class Note(models.Model):
 
     users = models.ManyToManyField(
         User,
-        through="UserNote",
-#         through_fields=("user_id","note_id")
+        through="UserNote"
     )
 
     pages = models.ManyToManyField(
         "Page",
-        through="NotePage",
-#         through_fields=("user_id","note_id")
+        through="NotePage"
     )
 
     users = models.ManyToManyField(
         "User",
-        through="UserNote",
-#         through_fields=("user_id","note_id")
+        through="UserNote"
     )
+
+    def __str__(self):
+        return self.id

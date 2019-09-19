@@ -63,3 +63,6 @@ class Page(models.Model):
         "PageComment",
         through="PagePageComment",
     )
+
+    def __str__(self):
+        return self.id

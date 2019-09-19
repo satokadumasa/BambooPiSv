@@ -32,3 +32,6 @@ class NotePage(models.Model):
         null=True,
         default=timezone.now
     )
+
+    def __str__(self):
+        return self.id

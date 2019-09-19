@@ -33,3 +33,6 @@ class UserAlbum(models.Model):
         null=True,
         default=timezone.now
     )
+
+    def __str__(self):
+        return self.id
