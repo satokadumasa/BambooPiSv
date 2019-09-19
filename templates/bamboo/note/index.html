@@ -15,12 +15,14 @@ index<br>
                     {{note.body}}
                     </div>
                 </div>
+{% endfor %}
+                {% if user.is_authenticated %}
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                     	<a href="{% url 'bamboo:note_create' %}">Add Note</a>
                     </div>
                 </div>
-{% endfor %}
+                {% endif %}
 
 <!-- 組み込みタグの読み込み-->
                 <hr>
