@@ -42,15 +42,13 @@ class Remark(models.Model):
 
     rooms = models.ManyToManyField(
         "Room",
-        through="RoomRemark",
-#         through_fields=("user_id","note_id")
+        through="RoomRemark"
     )
 
     users = models.ManyToManyField(
         "User",
-        through="UserRemark",
-#         through_fields=("user_id","note_id")
+        through="UserRemark"
     )
 
     def __str__(self):
-        return self.id
+        return str(self.id)

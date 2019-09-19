@@ -17,7 +17,7 @@
                 <hr>
                 <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-12 col-12">
-                        <a href="{% url 'bamboo:page_detail' note.pk %}" >{{page_comment.title}}</a>
+                        {{page_comment.title}}
                     </div>
                     <div class="col-lg-8 col-md-8 col-sm-12 col-12">
                         {% for user in page_comment.users.all %}【{{user.username}}】{% endfor %}

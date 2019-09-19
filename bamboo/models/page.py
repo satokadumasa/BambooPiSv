@@ -56,13 +56,13 @@ class Page(models.Model):
 
     notes = models.ManyToManyField(
         "Note",
-        through="NotePage",
+        through="NotePage"
     )
 
     page_comments = models.ManyToManyField(
         "PageComment",
-        through="PagePageComment",
+        through="PagePageComment"
     )
 
     def __str__(self):
-        return self.id
+        return str(self.id)

@@ -30,6 +30,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'home.apps.HomeConfig',
     'accounts.apps.AccountsConfig',
     'bamboo.apps.BambooConfig',
     'django.contrib.admin',
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrap4',
+
 ]
 
 MIDDLEWARE = [
@@ -85,6 +87,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'BambooPiSv.const.consts',
             ],
             'builtins':[
                 'bootstrap4.templatetags.bootstrap4',
@@ -152,3 +155,4 @@ STATICFILES_DIRS = (
 )
 
 LOGIN_REDIRECT_URL="bamboo:note_index"
+

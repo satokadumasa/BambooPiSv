@@ -23,4 +23,3 @@ class IndexView(generic.ListView):
         print("bamboo.note.IndexView.get_context_data")
         context["title"] = "Celaeno"
         return context
-#         return render(request, "bamboo/note/index.html", context)

@@ -20,7 +20,7 @@ from bamboo.views.note.index import IndexView as NoteIndexView
 from bamboo.views.note.detail import DetailView as NoteDetailView
 from bamboo.views.note.create import CreateView as NoteCreateView
 from bamboo.views.page.index import IndexView as PageIndexView
-from bamboo.views.note.detail import DetailView as PageDetailView
+from bamboo.views.page.detail import DetailView as PageDetailView
 from django.conf import settings
 
 app_name = 'bamboo'

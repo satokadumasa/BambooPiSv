@@ -34,9 +34,6 @@ class Room(models.Model):
         default=timezone.now
     )
 
-    def __str__(self):
-        return self.id
-
     updated_at = models.DateTimeField(
         verbose_name='更新日時',
         blank=True,
@@ -53,12 +50,13 @@ class Room(models.Model):
 
     rooms = models.ManyToManyField(
         "Room",
-        through="RoomRemark",
-#         through_fields=("user_id","note_id")
+        through="RoomRemark"
     )
 
     users = models.ManyToManyField(
         "User",
-        through="UserRoom",
-#         through_fields=("user_id","note_id")
+        through="UserRoom"
     )
+
+    def __str__(self):
+        return str(self.id)

@@ -34,9 +34,6 @@ class Site(models.Model):
         default=0
     )
 
-    def __str__(self):
-        return self.id
-
     created_at = models.DateTimeField(
         verbose_name='作成日時',
         blank=True,
@@ -69,3 +66,6 @@ class Site(models.Model):
         through="SiteRoom",
 #         through_fields=("user_id","note_id")
     )
+
+    def __str__(self):
+        return str(self.id)

@@ -9,6 +9,6 @@ from bamboo.models import Note
 
 class DetailView(generic.DetailView):
     model = Note
-    queryset = Note.objects.prefetch_related("pages", "users")
+    queryset = Note.objects.prefetch_related("pages__users", "users")
     context_object_name = 'note'
     template_name = "bamboo/note/detail.html"
