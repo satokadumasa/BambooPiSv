@@ -22,7 +22,9 @@ from bamboo.views.note.create import CreateView as NoteCreateView
 from bamboo.views.page.index import IndexView as PageIndexView
 from bamboo.views.page.detail import DetailView as PageDetailView
 from bamboo.views.page.create import CreateView as PageCreateView
+from bamboo.views.page_comment.create import CreateView as PageCommentCreateView
 from django.conf import settings
+from bamboo.models.page_comment import PageComment
 
 app_name = 'bamboo'
 
@@ -41,6 +43,9 @@ urlpatterns = [
     path('page/<int:pk>/', PageDetailView.as_view(), name='page_detail'),
     # Page新規登録画面
     path('note/<int:notes>/page/create', PageCreateView.as_view(), name='page_crete'),
+    # PageComment
+    path('page/<int:pages>/page_comment/create', PageCommentCreateView.as_view(), name='page_comment_crete'),
+
 ]
 if settings.DEBUG:
     import debug_toolbar

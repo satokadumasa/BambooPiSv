@@ -1,0 +1,30 @@
+{% extends 'commons/base.html' %}
+{% block title %}：ページ詳細 - {{ block.super }}{% endblock %}
+{% block content %}
+                <form action="{% url 'bamboo:page_index' %}{{pages}}/page_comment/create" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="users" id="id_users" value="{{form.users.value}}">
+                    <input type="hidden" name="pages" id="id_pages" value="{{pages}}">
+                    <input type="hidden" name="status" id="id_status" value="1">
+
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-12">
+                            {{form.title.label_tag}}
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-12 col-12">
+                            {{form.title}}
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12 col-12">
+                            {{form.body.label_tag}}
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-12 col-12">
+                            {{form.body}}
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                            <button type="submit" class="submit">
+                                Save
+                            </button>
+                        </div>
+                    </div>
+                </form>
+{% endblock %}
