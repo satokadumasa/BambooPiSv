@@ -13,19 +13,11 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import include,path
-from django.conf import settings
-from bambooapi.urls import router as bambppapi_urls
-urlpatterns = [
-    path('', include('home.urls')),
-    path('accounts/', include('accounts.urls')), # [追加]
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('admin/', admin.site.urls),
-    path('bamboo/', include('bamboo.urls')),
-    path('bambooapi/', include(bambppapi_urls.urls)),
-]
+from rest_framework import routers
+from bambooapi.views.note import NoteIndexViewSet
 
-if settings.DEBUG:
-    import debug_toolbar
-    urlpatterns = [path('__debug__/', include(debug_toolbar.urls))] + urlpatterns
+router = routers.DefaultRouter()
+router.register(r'note', NoteIndexViewSet)
+
+urlpatterns = router.urls
+

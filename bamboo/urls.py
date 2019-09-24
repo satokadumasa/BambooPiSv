@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include,path
+from django.conf import settings
 from bamboo.views.index import IndexView
 from bamboo.views.note.index import IndexView as NoteIndexView
 from bamboo.views.note.detail import DetailView as NoteDetailView
@@ -23,8 +24,6 @@ from bamboo.views.page.index import IndexView as PageIndexView
 from bamboo.views.page.detail import DetailView as PageDetailView
 from bamboo.views.page.create import CreateView as PageCreateView
 from bamboo.views.page_comment.create import CreateView as PageCommentCreateView
-from django.conf import settings
-from bamboo.models.page_comment import PageComment
 
 app_name = 'bamboo'
 
@@ -45,7 +44,6 @@ urlpatterns = [
     path('note/<int:notes>/page/create', PageCreateView.as_view(), name='page_crete'),
     # PageComment
     path('page/<int:pages>/page_comment/create', PageCommentCreateView.as_view(), name='page_comment_crete'),
-
 ]
 if settings.DEBUG:
     import debug_toolbar
