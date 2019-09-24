@@ -11,6 +11,7 @@ from bambooapi.serializer.note import NoteSerializer
 
 
 class NoteIndexViewSet(viewsets.ModelViewSet):
-    queryset = Note.objects.all()
+    model = Note
+    queryset = model.objects.prefetch_related('pages__users', "users")
     paginate_by = 2
     serializer_class = NoteSerializer

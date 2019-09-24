@@ -5,17 +5,17 @@ Created on 2019/09/24
 '''
 from rest_framework import serializers
 
-from bamboo.models.note import Note
-from bambooapi.serializer.page import PageSerializer
+from bamboo.models.page import Page
 from bambooapi.serializer.user import UserSerializer
+# from bambooapi.serializer.note import NoteSerializer
 
-class NoteSerializer(serializers.ModelSerializer):
-    pages = PageSerializer(many=True)
+class PageSerializer(serializers.ModelSerializer):
     users = UserSerializer(many=True)
+#     notes = NoteSerializer(many=True)
 
     class Meta:
-        model = Note
-        fields = ('title', 'body', 'users', 'pages', 'status', 'created_at')
+        model = Page
+        fields = ('title', 'body', 'status', 'users', 'notes', 'created_at')
         extra_kwargs = {
             'id': {'validators': []},
             'title': {'validators': []},

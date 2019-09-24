@@ -44,7 +44,6 @@ urlpatterns = [
     path('note/<int:notes>/page/create', PageCreateView.as_view(), name='page_crete'),
     # PageComment
     path('page/<int:pages>/page_comment/create', PageCommentCreateView.as_view(), name='page_comment_crete'),
-
 ]
 if settings.DEBUG:
     import debug_toolbar
